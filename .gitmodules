@@ -1,0 +1,6 @@
+[submodule "SDL"]
+	path = lib/SDL
+	url = https://github.com/libsdl-org/SDL
+[submodule "lib/libgbs"]
+	path = lib/libgbs
+	url = https://github.com/tadashibashi/gbsplay.git

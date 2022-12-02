@@ -1,6 +1,8 @@
 project(gbs-opus)
 cmake_minimum_required(VERSION 3.16)
 
+set(CMAKE_CXX_STANDARD 20)
+
 # Minimal build for GBSplay testing in Windows
 if (WIN32)
     # Set all targets to build into one directory. Paths are otherwise broken.
@@ -30,10 +32,14 @@ target_include_directories(gbs PRIVATE lib/SDL/include)
 if (MSVC)
     target_link_libraries(opus PRIVATE SDL2main SDL2 gbs)
     target_link_libraries(gbs PUBLIC zlibstatic)
-else()
+elseif(MINGW)
     target_link_libraries(opus PRIVATE SDL2main SDL2 mingw32 gbs)
     target_link_libraries(gbs PUBLIC z)
+else()
+    target_link_libraries(opus PRIVATE SDL2 gbs)
+    target_link_libraries(gbs PUBLIC z)
 endif()
+
 
 
 
